@@ -1,0 +1,379 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: #111;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 5px;
+}
+
+.canvas {
+  width: min(100%, 1536px);
+  margin-inline: auto;
+  overflow: hidden;
+}
+
+.site-header {
+  position: relative;
+  display: flex;
+  height: clamp(88px, 11.458vw, 176px);
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 5.4%;
+  background: #f3f1ef;
+}
+
+.wordmark {
+  font-size: clamp(17px, 1.7vw, 26px);
+  font-weight: 900;
+  letter-spacing: -0.065em;
+}
+
+.site-nav {
+  position: absolute;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transform: translateX(-50%);
+}
+
+.site-nav a,
+.site-nav span {
+  display: inline-flex;
+  min-width: 80px;
+  min-height: 32px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #e9e8e7;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.site-nav a:hover {
+  background: #dedcda;
+}
+
+.contact-label {
+  font-size: clamp(14px, 1.5vw, 23px);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+}
+
+.contact-label span {
+  display: inline-block;
+  margin-left: 3px;
+  font-size: 0.85em;
+}
+
+.hero {
+  position: relative;
+  height: min(52.083vw, 800px);
+  min-height: 420px;
+  overflow: hidden;
+  background: #545454;
+}
+
+.hero h1 {
+  position: absolute;
+  z-index: 0;
+  top: 47%;
+  left: 50%;
+  width: 100%;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  color: transparent;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(92px, 20.3vw, 312px);
+  font-weight: 400;
+  letter-spacing: -0.067em;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-text-stroke: 1.5px #a6a6a6;
+}
+
+.portrait {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 50%;
+  width: 34.4%;
+  height: 100%;
+  transform: translateX(-50%);
+  object-fit: contain;
+}
+
+.sticker {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  box-shadow: 7px 13px 15px rgb(0 0 0 / 22%);
+}
+
+.sticker-github {
+  top: 17%;
+  left: 23%;
+  width: 6.8%;
+  aspect-ratio: 1;
+  transform: rotate(-13deg);
+  background: #111;
+  color: white;
+}
+
+.sticker-github svg {
+  width: 69%;
+}
+
+.sticker-figma {
+  top: 19%;
+  right: 19%;
+  width: 7.1%;
+  aspect-ratio: 1;
+  transform: rotate(15deg);
+  border-radius: 7px;
+  background: #111;
+}
+
+.sticker-figma svg {
+  width: 40%;
+  height: 69%;
+}
+
+.sticker-react {
+  top: 62%;
+  left: 16%;
+  width: 11.2%;
+  aspect-ratio: 1;
+  transform: rotate(14deg);
+  border-radius: 7px;
+  background: #f6fbfc;
+}
+
+.sticker-react svg {
+  width: 91%;
+  height: 91%;
+}
+
+.sticker-js {
+  top: 67%;
+  right: 16%;
+  width: 10.1%;
+  aspect-ratio: 1;
+  transform: rotate(-12deg);
+  background: #f7df1e;
+  color: #111;
+}
+
+.sticker-js span {
+  align-self: end;
+  justify-self: end;
+  margin: 0 11% 5% 0;
+  font-size: clamp(36px, 5.5vw, 84px);
+  font-weight: 800;
+  letter-spacing: -0.1em;
+  line-height: 1;
+}
+
+.about {
+  display: grid;
+  min-height: min(30.729vw, 472px);
+  grid-template-columns: 1fr 1fr;
+  gap: 8%;
+  align-items: start;
+  padding: 8% 10.7% 7%;
+  background: #f3f1ef;
+}
+
+.about h2 {
+  margin: 0;
+  font-size: clamp(48px, 5.6vw, 86px);
+  font-weight: 800;
+  letter-spacing: -0.073em;
+  line-height: 0.97;
+}
+
+.asterisk {
+  display: block;
+  width: clamp(26px, 3vw, 46px);
+  margin-top: 36px;
+}
+
+.about-copy {
+  max-width: 570px;
+  padding-top: 2px;
+  font-size: clamp(16px, 1.32vw, 20px);
+  font-weight: 500;
+  line-height: 1.36;
+}
+
+.about-copy p {
+  margin: 0;
+}
+
+.about-copy p + p {
+  margin-top: 28px;
+}
+
+
+@media (max-width: 800px) {
+  .site-header {
+    min-height: 88px;
+    padding-inline: 6%;
+  }
+
+  .site-nav {
+    position: static;
+    gap: 4px;
+    transform: none;
+  }
+
+  .site-nav a,
+  .site-nav span {
+    min-width: 50px;
+    min-height: 28px;
+    font-size: 11px;
+  }
+
+  .contact-label {
+    font-size: 13px;
+  }
+
+  .hero {
+    height: 74vw;
+    min-height: 420px;
+  }
+
+  .hero h1 {
+    font-size: 17vw;
+    letter-spacing: -0.08em;
+  }
+
+  .portrait {
+    width: 50%;
+  }
+
+  .sticker-github,
+  .sticker-figma {
+    width: 10%;
+  }
+
+  .sticker-react {
+    left: 7%;
+    width: 16%;
+  }
+
+  .sticker-js {
+    right: 7%;
+    width: 15%;
+  }
+
+  .sticker-js span {
+    font-size: 8vw;
+  }
+
+  .about {
+    min-height: 0;
+    gap: 28px;
+    padding: 70px 8% 80px;
+  }
+
+  .about h2 {
+    font-size: clamp(42px, 6vw, 58px);
+  }
+
+  .about-copy {
+    font-size: 16px;
+  }
+
+}
+
+@media (max-width: 560px) {
+  .site-header {
+    height: 90px;
+    flex-wrap: wrap;
+    align-content: center;
+    row-gap: 12px;
+  }
+
+  .wordmark {
+    font-size: 18px;
+  }
+
+  .site-nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero {
+    height: 440px;
+  }
+
+  .hero h1 {
+    top: 49%;
+    font-size: 18vw;
+  }
+
+  .portrait {
+    width: 66%;
+  }
+
+  .sticker-github {
+    top: 15%;
+    left: 15%;
+    width: 12%;
+  }
+
+  .sticker-figma {
+    top: 17%;
+    right: 13%;
+    width: 12%;
+  }
+
+  .sticker-react {
+    top: 68%;
+    left: 4%;
+    width: 20%;
+  }
+
+  .sticker-js {
+    top: 68%;
+    right: 4%;
+    width: 18%;
+  }
+
+  .sticker-js span {
+    font-size: 11vw;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 70px 8% 80px;
+  }
+
+  .asterisk {
+    margin-top: 20px;
+  }
+
+}
