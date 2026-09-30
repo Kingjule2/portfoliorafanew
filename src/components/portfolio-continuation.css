@@ -3,7 +3,7 @@
   --muted: #a4a6a1;
   --line: #ffffff20;
   --accent: #c5d6ad;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Plus Jakarta Sans', serif, sans-serif;
 }
 
 .continuation .portfolio-section {
@@ -109,12 +109,24 @@
   border-color: #c5d6ad60;
 }
 .continuation .preview-window {
+  height: clamp(320px, 30vw, 450px);
   overflow: hidden;
-  height: clamp(290px, 30vw, 450px);
   border: 1px solid #ffffff22;
   border-radius: 10px;
   box-shadow: 0 18px 42px #0005;
   transition: transform 500ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.continuation .preview-window img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.continuation .preview-screenshot {
+  background: #242929;
+}
+.continuation .preview-poster {
+  background: radial-gradient(circle, #d9f0fc, #b6e2f9);
 }
 .continuation .project-showcase:hover .preview-window {
   transform: scale(1.025);
@@ -125,26 +137,6 @@
   color: #a4a6a1;
   font: 9px monospace;
   letter-spacing: 0.13em;
-}
-.continuation .preview-chrome {
-  display: flex;
-  height: 28px;
-  align-items: center;
-  gap: 5px;
-  padding: 0 12px;
-  background: #222826;
-}
-.continuation .preview-chrome > span {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #717d74;
-}
-.continuation .preview-chrome small {
-  margin-left: auto;
-  color: #a4b3a2;
-  font: 9px monospace;
-  letter-spacing: 0.05em;
 }
 .continuation .project-number {
   display: flex;
@@ -248,425 +240,6 @@
 .continuation .work-end svg {
   width: 25px;
   height: 25px;
-}
-
-/* Each visual is a CSS interface concept, not a screenshot of a deployed app. */
-.continuation .preview-regreen {
-  background: #e7ebde;
-}
-.continuation .preview-regreen .preview-chrome {
-  background: #d5dbcb;
-}
-.continuation .green-interface {
-  display: grid;
-  height: calc(100% - 28px);
-  grid-template-columns: 15% 1fr;
-  color: #233628;
-}
-.continuation .green-sidebar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  padding-top: 20px;
-  border-right: 1px solid #bdcbbb;
-  background: #dce5d6;
-}
-.continuation .green-sidebar strong {
-  font-size: clamp(8px, 1vw, 15px);
-  letter-spacing: -0.07em;
-}
-.continuation .green-sidebar strong span {
-  color: #68936a;
-}
-.continuation .green-sidebar i {
-  width: 32%;
-  height: 5px;
-  border-radius: 8px;
-  background: #a9bea7;
-}
-.continuation .green-sidebar i:first-of-type {
-  margin-top: 22px;
-  background: #386b4c;
-}
-.continuation .green-content {
-  min-width: 0;
-  padding: 6% 7%;
-}
-.continuation .green-topline {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  font: 9px monospace;
-  letter-spacing: 0.08em;
-}
-.continuation .green-topline span {
-  color: #4f7551;
-}
-.continuation .green-content h3 {
-  margin: 8% 0 1%;
-  font-size: clamp(23px, 3vw, 46px);
-  line-height: 0.96;
-  letter-spacing: -0.07em;
-}
-.continuation .green-content h3 em {
-  font-style: normal;
-  color: #639363;
-}
-.continuation .green-content > p {
-  margin: 8px 0 6%;
-  font-size: clamp(9px, 0.9vw, 13px);
-}
-.continuation .green-dashboard {
-  display: grid;
-  height: 48%;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 10px;
-}
-.continuation .green-map {
-  position: relative;
-  overflow: hidden;
-  border-radius: 6px;
-  background:
-    repeating-linear-gradient(26deg, transparent 0 23px, #a3be9966 24px 25px),
-    #bcd0ae;
-}
-.continuation .map-patch {
-  position: absolute;
-  display: block;
-  border-radius: 45% 55% 38% 62%;
-  background: #6f9b70;
-  transform: rotate(-20deg);
-}
-.continuation .patch-one {
-  inset: 12% 58% 30% 8%;
-}
-.continuation .patch-two {
-  inset: 40% 14% 8% 46%;
-  background: #89ae82;
-}
-.continuation .patch-three {
-  inset: 5% 10% 60% 65%;
-  background: #507e5b;
-}
-.continuation .map-pin {
-  position: absolute;
-  top: 36%;
-  left: 44%;
-  display: grid;
-  width: 27px;
-  height: 27px;
-  place-items: center;
-  border: 3px solid #fff;
-  border-radius: 50%;
-  background: #315e43;
-  color: #fff;
-  font-size: 13px;
-}
-.continuation .green-map small {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  padding: 6px;
-  border-radius: 3px;
-  background: #ebf0e3;
-  font: 7px monospace;
-}
-.continuation .green-metrics {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 6px;
-  padding: 9%;
-  border-radius: 6px;
-  background: #f6f7ed;
-}
-.continuation .green-metrics small {
-  font: 8px monospace;
-  color: #60725d;
-}
-.continuation .green-metrics strong {
-  font-size: clamp(26px, 3.2vw, 50px);
-  letter-spacing: -0.08em;
-}
-.continuation .green-metrics strong span {
-  font-size: 0.5em;
-}
-.continuation .metric-track {
-  height: 5px;
-  margin-bottom: 6px;
-  border-radius: 4px;
-  background: #d9e4d3;
-}
-.continuation .metric-track i {
-  display: block;
-  width: 78%;
-  height: 100%;
-  border-radius: inherit;
-  background: #68936a;
-}
-.continuation .green-metrics b {
-  font-size: clamp(8px, 0.9vw, 12px);
-}
-.continuation .preview-smpl {
-  background: #111e23;
-}
-.continuation .preview-smpl .preview-chrome {
-  background: #0c181d;
-}
-.continuation .smpl-interface {
-  height: calc(100% - 28px);
-  padding: 5% 6%;
-  color: #e5ede9;
-  background: radial-gradient(circle at 80% 70%, #1c3a40, #12272e 65%);
-}
-.continuation .smpl-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.continuation .smpl-top strong {
-  font-size: clamp(17px, 2vw, 29px);
-  letter-spacing: -0.08em;
-}
-.continuation .smpl-top strong span,
-.continuation .smpl-intro h3 span {
-  color: #84c7bd;
-}
-.continuation .smpl-top small {
-  color: #95d8bf;
-  font: 9px monospace;
-  letter-spacing: 0.08em;
-}
-.continuation .smpl-intro {
-  margin: 6% 0 5%;
-}
-.continuation .smpl-intro small {
-  color: #9abcb6;
-  font: 8px monospace;
-  letter-spacing: 0.16em;
-}
-.continuation .smpl-intro h3 {
-  margin: 8px 0 0;
-  font-size: clamp(24px, 2.6vw, 40px);
-  line-height: 1;
-  letter-spacing: -0.06em;
-}
-.continuation .smpl-panels {
-  display: grid;
-  height: 49%;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 9px;
-}
-.continuation .smpl-panels small {
-  color: #a6c5bf;
-  font: 8px monospace;
-  letter-spacing: 0.05em;
-}
-.continuation .smpl-main-panel,
-.continuation .smpl-side-panels > div {
-  display: flex;
-  flex-direction: column;
-  padding: 6%;
-  border: 1px solid #ffffff16;
-  border-radius: 6px;
-  background: #ffffff0c;
-}
-.continuation .smpl-main-panel strong {
-  margin-top: 3%;
-  font-size: clamp(29px, 3.5vw, 54px);
-  letter-spacing: -0.08em;
-}
-.continuation .smpl-main-panel strong span {
-  font-size: 0.5em;
-  color: #9dbbb6;
-}
-.continuation .smpl-main-panel > span,
-.continuation .smpl-side-panels span {
-  margin-top: auto;
-  color: #94b3ad;
-  font-size: clamp(8px, 0.8vw, 11px);
-}
-.continuation .smpl-chart {
-  display: flex;
-  height: 30%;
-  align-items: end;
-  gap: 3%;
-  margin-block: auto;
-}
-.continuation .smpl-chart i {
-  flex: 1;
-  height: 32%;
-  border-radius: 2px 2px 0 0;
-  background: #72b6aa;
-}
-.continuation .smpl-chart i:nth-child(3n) {
-  height: 78%;
-}
-.continuation .smpl-chart i:nth-child(4n) {
-  height: 51%;
-}
-.continuation .smpl-chart i:nth-child(5n) {
-  height: 94%;
-}
-.continuation .smpl-side-panels {
-  display: grid;
-  gap: 9px;
-}
-.continuation .smpl-side-panels strong {
-  margin-top: 7%;
-  color: #b6e0d0;
-  font-size: clamp(12px, 1.5vw, 21px);
-  letter-spacing: -0.04em;
-}
-.continuation .preview-commerce {
-  background: #e9e5df;
-}
-.continuation .preview-commerce .preview-chrome {
-  background: #dedbd4;
-}
-.continuation .commerce-interface {
-  position: relative;
-  height: calc(100% - 28px);
-  overflow: hidden;
-  padding: 5% 6%;
-  color: #272926;
-  background: #eae8e1;
-}
-.continuation .commerce-top {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  border-bottom: 1px solid #9b9e95;
-  padding-bottom: 14px;
-}
-.continuation .commerce-top strong {
-  font-size: clamp(11px, 1.2vw, 17px);
-  letter-spacing: -0.06em;
-}
-.continuation .commerce-top strong span {
-  vertical-align: top;
-  font-size: 8px;
-}
-.continuation .commerce-top > span,
-.continuation .commerce-top small {
-  font: 9px monospace;
-}
-.continuation .commerce-editorial {
-  position: relative;
-  z-index: 2;
-  padding-top: 15%;
-  pointer-events: none;
-}
-.continuation .commerce-editorial small {
-  font: 8px monospace;
-  letter-spacing: 0.15em;
-}
-.continuation .commerce-editorial h3 {
-  margin: 14px 0;
-  font-size: clamp(26px, 3.5vw, 54px);
-  line-height: 0.95;
-  letter-spacing: -0.07em;
-}
-.continuation .commerce-editorial p {
-  max-width: 180px;
-  font-size: clamp(9px, 0.9vw, 13px);
-}
-.continuation .commerce-editorial > span {
-  display: inline-block;
-  margin-top: 15px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid;
-  font-size: 10px;
-}
-.continuation .commerce-product {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  align-items: center;
-  padding-bottom: 14px;
-}
-.continuation .commerce-product small {
-  position: relative;
-  z-index: 1;
-  font: 8px monospace;
-}
-.continuation .product-one {
-  top: 19%;
-  right: 25%;
-  bottom: 8%;
-  width: 22%;
-  background: #d6d3c8;
-}
-.continuation .product-two {
-  top: 27%;
-  right: 5%;
-  bottom: 8%;
-  width: 18%;
-  background: #c3cdc2;
-}
-.continuation .product-shape {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.continuation .lamp {
-  top: 20%;
-  width: 45%;
-  height: 38%;
-  border-radius: 50% 50% 12% 12%;
-  background: #797e70;
-  box-shadow: 0 16px 0 -13px #51594c;
-}
-.continuation .lamp:before {
-  position: absolute;
-  top: 80%;
-  left: 48%;
-  width: 5%;
-  height: 105%;
-  background: #51594c;
-  content: "";
-}
-.continuation .lamp:after {
-  position: absolute;
-  top: 182%;
-  left: 15%;
-  width: 70%;
-  height: 8%;
-  border-radius: 50%;
-  background: #51594c;
-  content: "";
-}
-.continuation .chair {
-  top: 26%;
-  width: 55%;
-  height: 40%;
-  border-radius: 30% 30% 18% 18%;
-  background: #a47f67;
-}
-.continuation .chair:before {
-  position: absolute;
-  top: 77%;
-  left: -10%;
-  width: 120%;
-  height: 28%;
-  border-radius: 35%;
-  background: #8e6e5e;
-  content: "";
-}
-.continuation .chair:after {
-  position: absolute;
-  top: 100%;
-  left: 18%;
-  width: 65%;
-  height: 85%;
-  border-left: 4px solid #554e43;
-  border-right: 4px solid #554e43;
-  content: "";
 }
 
 .continuation .case-study {
@@ -992,102 +565,6 @@
   color: #8f9d90;
   font: 11px monospace;
 }
-.continuation .contact-cta {
-  padding-top: clamp(100px, 12vw, 185px);
-  padding-bottom: clamp(80px, 8vw, 124px);
-}
-.continuation .contact-cta .portfolio-eyebrow {
-  margin-bottom: clamp(60px, 9vw, 132px);
-}
-.continuation .contact-kicker {
-  margin: 0 0 22px;
-  color: #74816f;
-  font: 11px monospace;
-  letter-spacing: 0.15em;
-}
-.continuation .contact-cta h2 {
-  max-width: 1200px;
-  font-size: clamp(52px, 7.7vw, 118px);
-  line-height: 1.05;
-}
-.continuation .contact-cta h2 em {
-  display: inline-block;
-  transition: transform 400ms cubic-bezier(0.2, 0.7, 0.3, 1);
-}
-.continuation .contact-cta h2:hover em {
-  transform: translateX(8px);
-}
-.continuation .contact-bottom {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 30px;
-  margin-top: clamp(44px, 6vw, 88px);
-}
-.continuation .contact-bottom p {
-  max-width: 440px;
-  margin: 0;
-  color: #656e65;
-  font-size: clamp(16px, 1.5vw, 21px);
-  line-height: 1.5;
-}
-.continuation .talk-button {
-  display: flex;
-  width: clamp(160px, 18vw, 240px);
-  height: clamp(160px, 18vw, 240px);
-  flex: none;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 30px;
-  border-radius: 50%;
-  background: #1b211d;
-  color: #eeeae3;
-  font-size: clamp(20px, 2.3vw, 32px);
-  font-weight: 700;
-  letter-spacing: -0.05em;
-  transition:
-    transform 300ms ease,
-    background 300ms ease;
-}
-.continuation .talk-button svg {
-  align-self: end;
-  width: 32px;
-  height: 32px;
-}
-.continuation .talk-button:hover,
-.continuation .talk-button:focus-visible {
-  transform: rotate(-7deg) scale(1.04);
-  background: #405f45;
-}
-.continuation .contact-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: clamp(90px, 10vw, 154px);
-  padding-top: 24px;
-  border-top: 1px solid #cbd0c8;
-}
-.continuation .contact-links a {
-  display: inline-flex;
-  min-height: 42px;
-  align-items: center;
-  gap: 10px;
-  padding: 0 15px;
-  border: 1px solid #b4bab0;
-  border-radius: 999px;
-  font-size: 13px;
-  transition:
-    background 200ms ease,
-    color 200ms ease;
-}
-.continuation .contact-links a:hover {
-  background: #1b211d;
-  color: #eeeae3;
-}
-.continuation .contact-links svg {
-  width: 16px;
-  height: 16px;
-}
 .continuation .portfolio-footer {
   display: grid;
   grid-template-columns: 1fr 1fr auto;
@@ -1188,21 +665,6 @@
   .continuation .preview-window {
     height: clamp(320px, 52vw, 450px);
   }
-  .continuation .green-content h3 {
-    font-size: clamp(26px, 5vw, 42px);
-  }
-  .continuation .green-metrics strong {
-    font-size: 38px;
-  }
-  .continuation .smpl-intro h3 {
-    font-size: 36px;
-  }
-  .continuation .smpl-main-panel strong {
-    font-size: 42px;
-  }
-  .continuation .commerce-editorial h3 {
-    font-size: 42px;
-  }
   .continuation .case-layout {
     grid-template-columns: 1fr;
   }
@@ -1250,62 +712,7 @@
     border-radius: 15px;
   }
   .continuation .preview-window {
-    height: clamp(285px, 80vw, 380px);
-  }
-  .continuation .green-sidebar {
-    gap: 11px;
-  }
-  .continuation .green-content {
-    padding: 8% 5%;
-  }
-  .continuation .green-content h3 {
-    font-size: clamp(25px, 7vw, 36px);
-  }
-  .continuation .green-dashboard {
-    height: 46%;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 5px;
-  }
-  .continuation .green-metrics {
-    padding: 7%;
-  }
-  .continuation .green-metrics strong {
-    font-size: 28px;
-  }
-  .continuation .green-metrics b {
-    font-size: 8px;
-  }
-  .continuation .green-map small {
-    display: none;
-  }
-  .continuation .smpl-intro h3 {
-    font-size: 30px;
-  }
-  .continuation .smpl-main-panel strong {
-    font-size: 34px;
-  }
-  .continuation .smpl-side-panels strong {
-    font-size: 12px;
-  }
-  .continuation .commerce-top > span {
-    display: none;
-  }
-  .continuation .commerce-editorial {
-    padding-top: 23%;
-  }
-  .continuation .commerce-editorial h3 {
-    font-size: 32px;
-  }
-  .continuation .commerce-editorial p {
-    max-width: 135px;
-  }
-  .continuation .product-one {
-    right: 22%;
-    width: 23%;
-  }
-  .continuation .product-two {
-    right: 3%;
-    width: 17%;
+    height: clamp(310px, 95vw, 400px);
   }
   .continuation .project-info h3 {
     font-size: 43px;
@@ -1374,23 +781,6 @@
   }
   .continuation .building-notes li {
     font-size: 13px;
-  }
-  .continuation .contact-cta h2 {
-    font-size: clamp(48px, 11vw, 65px);
-  }
-  .continuation .contact-bottom {
-    align-items: start;
-    flex-direction: column;
-    gap: 40px;
-  }
-  .continuation .talk-button {
-    width: 160px;
-    height: 160px;
-    align-self: end;
-    padding: 22px;
-  }
-  .continuation .contact-links {
-    margin-top: 90px;
   }
   .continuation .portfolio-footer {
     grid-template-columns: 1fr;

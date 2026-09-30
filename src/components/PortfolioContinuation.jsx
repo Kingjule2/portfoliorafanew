@@ -7,6 +7,10 @@ import {
   LuMail,
 } from "react-icons/lu";
 import "./portfolio-continuation.css";
+import jadiduluImage from "../../assets/jadidulu.png";
+import vclassImage from "../../assets/vclass.png";
+import jagaAnabulPoster from "../../asetfoto/Poster Beranda.png";
+import RocketLaunch from "./RocketLaunch.jsx";
 
 const email = "rafafazli7@gmail.com";
 const contact = (subject) =>
@@ -15,30 +19,34 @@ const contact = (subject) =>
 const projects = [
   {
     number: "01",
-    name: "ReGreen",
-    category: "LAND INTELLIGENCE / AI",
+    name: "Jadidulu",
+    category: "SOFTWARE HOUSE / PRODUCT STUDIO",
     description:
-      "An AI-powered concept for understanding land conditions and recommending thoughtful restoration paths.",
-    tags: ["AI", "Data Visualization", "Web App"],
-    preview: "regreen",
+      "A software house I'm currently building to create thoughtful digital products and meaningful web experiences.",
+    tags: ["Software House", "Product Design", "Web Development"],
+    image: jadiduluImage,
+    imageAlt: "Jadidulu homepage with an invitation to bring an app idea to life",
   },
   {
     number: "02",
-    name: "SMPL",
-    category: "SMART FARMING / IOT",
+    name: "Jaga Anabul",
+    category: "DONATION PLATFORM / FREELANCE",
     description:
-      "A smarter way to keep an eye on catfish farming, from water conditions to automated feeding.",
-    tags: ["Dashboard", "IoT", "Monitoring"],
-    preview: "smpl",
+      "A donation platform for animal shelters, built to help people discover and support anabul care initiatives.",
+    tags: ["Frontend", "Donation Platform", "Freelance"],
+    image: jagaAnabulPoster,
+    imageAlt: "Jaga Anabul poster reading Bersama, Kita Jaga Mereka with volunteers holding pets",
+    poster: true,
   },
   {
     number: "03",
-    name: "E-Commerce Platform",
-    category: "COMMERCE / FULLSTACK",
+    name: "VClass",
+    category: "EDUCATION PLATFORM / FREELANCE",
     description:
-      "A B2B commerce experience built to make product discovery and ordering feel a little less complicated.",
-    tags: ["Laravel", "E-Commerce", "UI Design"],
-    preview: "commerce",
+      "A freelance frontend project for a digital classroom experience that makes online learning easier to access and navigate.",
+    tags: ["Frontend", "Education", "Freelance"],
+    image: vclassImage,
+    imageAlt: "V-Class landing page showing digital classroom tools and a live exam dashboard",
   },
 ];
 
@@ -51,173 +59,10 @@ function SectionLabel({ number, children }) {
   );
 }
 
-function ProjectPreview({ kind }) {
-  if (kind === "regreen") {
-    return (
-      <div
-        className="preview-window preview-regreen"
-        aria-label="Illustrative ReGreen land intelligence interface"
-      >
-        <div className="preview-chrome">
-          <span />
-          <span />
-          <span />
-          <small>regreen / overview</small>
-        </div>
-        <div className="green-interface">
-          <aside className="green-sidebar">
-            <strong>
-              re<span>green</span>.
-            </strong>
-            <i />
-            <i />
-            <i />
-            <i />
-          </aside>
-          <div className="green-content">
-            <div className="green-topline">
-              <small>LAND OVERVIEW</small>
-              <span>↗ Explore region</span>
-            </div>
-            <h3>
-              Make space
-              <br />
-              for <em>growth.</em>
-            </h3>
-            <p>Data-led insights for a greener tomorrow.</p>
-            <div className="green-dashboard">
-              <div className="green-map">
-                <span className="map-patch patch-one" />
-                <span className="map-patch patch-two" />
-                <span className="map-patch patch-three" />
-                <span className="map-pin">✳</span>
-                <small>RESTORATION ZONE / 01</small>
-              </div>
-              <div className="green-metrics">
-                <small>LAND HEALTH</small>
-                <strong>
-                  78<span>%</span>
-                </strong>
-                <div className="metric-track">
-                  <i />
-                </div>
-                <small>Recommended action</small>
-                <b>Restore native canopy ↗</b>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-  if (kind === "smpl") {
-    return (
-      <div
-        className="preview-window preview-smpl"
-        aria-label="Illustrative SMPL fish farm monitoring interface"
-      >
-        <div className="preview-chrome">
-          <span />
-          <span />
-          <span />
-          <small>smpl / control room</small>
-        </div>
-        <div className="smpl-interface">
-          <div className="smpl-top">
-            <strong>
-              smpl<span>.</span>
-            </strong>
-            <small>● &nbsp;SYSTEM RUNNING</small>
-          </div>
-          <div className="smpl-intro">
-            <small>FARM OVERVIEW / POND 01</small>
-            <h3>
-              A clearer view
-              <br />
-              of your farm<span>.</span>
-            </h3>
-          </div>
-          <div className="smpl-panels">
-            <div className="smpl-main-panel">
-              <small>WATER TEMPERATURE</small>
-              <strong>
-                28.4<span>°C</span>
-              </strong>
-              <div className="smpl-chart">
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-              </div>
-              <span>Stable over the last 24 hours</span>
-            </div>
-            <div className="smpl-side-panels">
-              <div>
-                <small>WATER QUALITY</small>
-                <strong>Healthy ↗</strong>
-                <span>All readings normal</span>
-              </div>
-              <div>
-                <small>NEXT FEED</small>
-                <strong>16:30</strong>
-                <span>Automatic schedule</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+function ProjectPreview({ project }) {
   return (
-    <div
-      className="preview-window preview-commerce"
-      aria-label="Illustrative B2B commerce storefront interface"
-    >
-      <div className="preview-chrome">
-        <span />
-        <span />
-        <span />
-        <small>commerce / storefront</small>
-      </div>
-      <div className="commerce-interface">
-        <div className="commerce-top">
-          <strong>
-            form & function<span>®</span>
-          </strong>
-          <span>Shop &nbsp;&nbsp; Collections &nbsp;&nbsp; About</span>
-          <small>Cart (02)</small>
-        </div>
-        <div className="commerce-editorial">
-          <small>THE WORKSPACE EDIT / 001</small>
-          <h3>
-            Objects for
-            <br />
-            better work.
-          </h3>
-          <p>Considered essentials for spaces that create.</p>
-          <span>Explore the collection ↗</span>
-        </div>
-        <div className="commerce-product product-one">
-          <div className="product-shape lamp">
-            <i />
-          </div>
-          <small>01 / DESK LIGHT</small>
-        </div>
-        <div className="commerce-product product-two">
-          <div className="product-shape chair">
-            <i />
-          </div>
-          <small>02 / STUDIO CHAIR</small>
-        </div>
-      </div>
+    <div className={`preview-window ${project.poster ? "preview-poster" : "preview-screenshot"}`}>
+      <img src={project.image} alt={project.imageAlt} loading="lazy" decoding="async" />
     </div>
   );
 }
@@ -334,9 +179,9 @@ export default function PortfolioContinuation() {
               key={project.number}
             >
               <div className="project-visual">
-                <ProjectPreview kind={project.preview} />
+                <ProjectPreview project={project} />
                 <span className="preview-caption">
-                  INTERFACE CONCEPT / {project.name.toUpperCase()}
+                  PROJECT VISUAL / {project.name.toUpperCase()}
                 </span>
               </div>
               <div className="project-info">
@@ -375,7 +220,7 @@ export default function PortfolioContinuation() {
               Behind <em>the Build.</em>
             </h2>
             <p>
-              More than a screen. A little look at the thinking behind ReGreen.
+              More than a screen. A little look at the thinking behind Jadidulu.
             </p>
           </div>
         </div>
@@ -383,7 +228,7 @@ export default function PortfolioContinuation() {
           <div className="case-visual reveal">
             <div className="case-visual-top">
               <span>FIELD NOTES / 001</span>
-              <span>REGREEN ↗</span>
+              <span>JADIDULU ↗</span>
             </div>
             <div className="case-landscape" aria-hidden="true">
               <span className="landscape-sun" />
@@ -393,7 +238,7 @@ export default function PortfolioContinuation() {
             </div>
             <div className="case-visual-bottom">
               <strong>
-                Restoring what
+                Building what
                 <br />
                 comes next.
               </strong>
@@ -406,8 +251,8 @@ export default function PortfolioContinuation() {
               <div>
                 <h3>Start with the land.</h3>
                 <p>
-                  Restoration decisions need a clearer picture of local
-                  conditions and opportunities.
+                  Good digital products start with a clear understanding of
+                  people, context, and the problem worth solving.
                 </p>
               </div>
             </li>
@@ -416,8 +261,8 @@ export default function PortfolioContinuation() {
               <div>
                 <h3>Turn data into direction.</h3>
                 <p>
-                  Bring land insights and recommendations together in one
-                  approachable interface.
+                  Bring strategy, design, and technology together in one
+                  focused software house.
                 </p>
               </div>
             </li>
@@ -426,8 +271,8 @@ export default function PortfolioContinuation() {
               <div>
                 <h3>Make the complex usable.</h3>
                 <p>
-                  Shape the experience around readable data, clear navigation,
-                  and actionable next steps.
+                  Shape the experience around clear thinking, useful details,
+                  and interfaces people want to use.
                 </p>
               </div>
             </li>
@@ -436,8 +281,8 @@ export default function PortfolioContinuation() {
               <div>
                 <h3>A place to begin.</h3>
                 <p>
-                  A product concept that makes restoration insights easier to
-                  explore and understand.
+                  A growing studio with room for better ideas and meaningful
+                  products to take shape.
                 </p>
               </div>
             </li>
@@ -551,48 +396,7 @@ export default function PortfolioContinuation() {
         id="contact"
         aria-labelledby="contact-title"
       >
-        <div className="reveal">
-          <SectionLabel number="08">LET'S CONNECT</SectionLabel>
-          <p className="contact-kicker">HAVE A PROJECT IN MIND?</p>
-          <h2 id="contact-title">
-            Have an idea?
-            <br />
-            <em>Let's build something.</em>
-          </h2>
-          <div className="contact-bottom">
-            <p>
-              I'm always interested in working on interesting products,
-              experiments, and digital experiences.
-            </p>
-            <a className="talk-button" href={contact("Let's build something")}>
-              <span>Let's Talk</span>
-              <LuArrowUpRight aria-hidden="true" />
-            </a>
-          </div>
-          <div className="contact-links">
-            <a
-              href="https://github.com/Kingjule2"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <LuGithub aria-hidden="true" /> GitHub{" "}
-              <LuArrowUpRight aria-hidden="true" />
-            </a>
-            <a
-              href="https://www.linkedin.com/search/results/people/?keywords=Rafa%20Fazli"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Search for Rafa Fazli on LinkedIn"
-            >
-              <LuLinkedin aria-hidden="true" /> LinkedIn{" "}
-              <LuArrowUpRight aria-hidden="true" />
-            </a>
-            <a href={`mailto:${email}`}>
-              <LuMail aria-hidden="true" /> Email{" "}
-              <LuArrowUpRight aria-hidden="true" />
-            </a>
-          </div>
-        </div>
+        <RocketLaunch />
       </section>
 
       <footer className="portfolio-footer">
