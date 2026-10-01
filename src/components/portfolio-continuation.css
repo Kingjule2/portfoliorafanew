@@ -74,6 +74,7 @@
 }
 .continuation .selected-work {
   padding-top: clamp(84px, 9vw, 140px);
+  overflow: clip;
   background: radial-gradient(ellipse at 70% 4%, #202525 0, #151718 38%);
 }
 .continuation .project-list {
@@ -247,7 +248,7 @@
 }
 .continuation .case-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: clamp(40px, 6vw, 92px);
   align-items: stretch;
 }
@@ -275,8 +276,11 @@
 }
 .continuation .case-visual-bottom {
   align-items: end;
+  flex-wrap: wrap;
 }
 .continuation .case-visual-bottom strong {
+  min-width: min(100%, 300px);
+  flex: 1;
   font:
     600 clamp(38px, 4vw, 62px) / 0.99 Arial,
     sans-serif;
@@ -284,6 +288,7 @@
 }
 .continuation .case-visual-bottom span {
   max-width: 115px;
+  margin-left: auto;
   text-align: right;
   line-height: 1.5;
 }
@@ -499,7 +504,7 @@
 }
 .continuation .building-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 10%;
   align-items: end;
   padding-top: clamp(52px, 6vw, 90px);
@@ -791,8 +796,7 @@
 }
 .continuation .portfolio-footer {
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  align-items: end;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
   gap: 30px;
   padding: 48px 10.7%;
   background: #151718;
@@ -989,7 +993,7 @@
     aspect-ratio: 4 / 3;
   }
   .continuation .project-info h3 {
-    font-size: 43px;
+    font-size: clamp(36px, 9vw, 43px);
   }
   .continuation .project-description {
     margin: 20px 0;
@@ -1006,7 +1010,7 @@
     padding-top: 20px;
   }
   .continuation .capability-row {
-    grid-template-columns: 30px 1fr 22px;
+    grid-template-columns: 30px minmax(0, 1fr) 22px;
     min-height: 0;
     padding: 24px 0;
   }
@@ -1022,7 +1026,7 @@
     left: 12px;
   }
   .continuation .journey-step {
-    grid-template-columns: 30px 1fr 20px;
+    grid-template-columns: 30px minmax(0, 1fr) 20px;
     gap: 14px;
     min-height: 104px;
   }

@@ -33,7 +33,7 @@
 
 .stack-stage {
   display: grid;
-  min-height: 640px;
+  min-height: 800px;
   place-items: center;
   perspective: 1200px;
 }
@@ -227,7 +227,7 @@
   }
 
   .stack-stage {
-    min-height: 590px;
+    min-height: 710px;
   }
 
   .stack-keyboard {
