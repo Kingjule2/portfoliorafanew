@@ -13,7 +13,7 @@ function Hero() {
           <a href="#work">Work</a>
           <a href="#tools">Tools</a>
         </nav>
-        <a className="contact-label" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
+        <a className="contact-label" href="mailto:rafafazli7@gmail.com?subject=Let%27s%20talk">Let's talk <span aria-hidden="true">↗</span></a>
       </header>
 
       <section className="hero" id="top" aria-label="Frontend">

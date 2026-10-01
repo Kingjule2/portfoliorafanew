@@ -244,6 +244,13 @@
   }
 }
 
+@media (min-width: 641px) and (max-width: 800px) {
+  .stack-keyboard {
+    width: min(450px, calc(100% - 40px));
+    transform: rotateX(22deg) rotateZ(-14deg);
+  }
+}
+
 @media (max-width: 640px) {
   .tech-stack {
     padding: 56px 7% 30px;
@@ -300,9 +307,13 @@
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 430px) {
   .stack-keys {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .stack-keys li:last-child:nth-child(3n + 1) {
+    grid-column: 2;
   }
 }
 

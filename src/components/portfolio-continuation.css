@@ -984,6 +984,10 @@
   .continuation .preview-window {
     height: clamp(310px, 95vw, 400px);
   }
+  .continuation .preview-screenshot {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
   .continuation .project-info h3 {
     font-size: 43px;
   }

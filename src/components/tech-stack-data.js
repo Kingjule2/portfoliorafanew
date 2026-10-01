@@ -1,9 +1,9 @@
 import {
   SiJavascript, SiTypescript, SiReact, SiNextdotjs, SiNodedotjs,
   SiVite, SiDocker, SiGithub, SiFigma, SiTailwindcss, SiLaravel,
-  SiPostgresql, SiMysql, SiLivewire,
+  SiPostgresql, SiMysql, SiLivewire, SiPython,
 } from 'react-icons/si';
-import { LuPanelsTopLeft, LuWaypoints } from 'react-icons/lu';
+import { LuWaypoints } from 'react-icons/lu';
 
 // Each palette defines the top surface, lower bevel, and legend color.
 export const techStack = [
@@ -22,5 +22,5 @@ export const techStack = [
   { name: 'MySQL', category: 'Structured data, connected experiences', icon: SiMysql, color: '#d5a55f', depth: '#826030', ink: '#3b2b16' },
   { name: 'Livewire', category: 'Dynamic interfaces, Laravel-native', icon: SiLivewire, color: '#d591ad', depth: '#835369', ink: '#422535' },
   { name: 'REST API', category: 'Connecting interfaces and services', icon: LuWaypoints, color: '#828bbb', depth: '#474d75', ink: '#1f253f' },
-  { name: 'UI/UX', category: 'Made for people, down to the details', icon: LuPanelsTopLeft, color: '#b6c596', depth: '#66744c', ink: '#2e3922' },
+  { name: 'Python', category: 'Scripting, automation, and backend development', icon: SiPython, color: '#b6c596', depth: '#66744c', ink: '#2e3922' },
 ];

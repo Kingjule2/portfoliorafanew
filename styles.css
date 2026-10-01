@@ -125,6 +125,7 @@ a:focus-visible {
   height: 100%;
   transform: translateX(-50%);
   object-fit: contain;
+  object-position: center bottom;
 }
 
 .sticker {
@@ -353,6 +354,13 @@ a:focus-visible {
     font-size: 16px;
   }
 
+}
+
+@media (max-width: 700px) {
+  .about {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
 }
 
 @media (max-width: 560px) {
