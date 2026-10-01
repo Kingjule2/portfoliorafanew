@@ -1,6 +1,7 @@
 import { LuGithub } from 'react-icons/lu';
 import TechStack from './components/TechStack.jsx';
 import PortfolioContinuation from './components/PortfolioContinuation.jsx';
+import portrait from '../assets/portrait.png';
 
 function Hero() {
   return (
@@ -25,7 +26,7 @@ function Hero() {
           <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="7" fill="#087e9b"/><ellipse cx="50" cy="50" rx="43" ry="16" stroke="#087e9b" strokeWidth="4"/><ellipse cx="50" cy="50" rx="43" ry="16" stroke="#087e9b" strokeWidth="4" transform="rotate(60 50 50)"/><ellipse cx="50" cy="50" rx="43" ry="16" stroke="#087e9b" strokeWidth="4" transform="rotate(120 50 50)"/></svg>
         </div>
         <div className="sticker sticker-js" aria-hidden="true"><span>JS</span></div>
-        <img className="portrait" src="/assets/portrait.png" alt="Portrait of Rafazli" />
+        <img className="portrait" src={portrait} alt="Portrait of Rafazli" />
       </section>
 
       <section className="about" id="about" aria-labelledby="about-title">
