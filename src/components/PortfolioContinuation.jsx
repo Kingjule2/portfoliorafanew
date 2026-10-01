@@ -8,10 +8,7 @@ import "./portfolio-continuation.css";
 import jadiduluImage from "../../assets/jadidulu.png";
 import vclassImage from "../../assets/vclass.png";
 import jagaAnabulPoster from "../../asetfoto/Poster Beranda.png";
-
-const email = "rafafazli7@gmail.com";
-const contact = (subject) =>
-  `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+import { composeEmail } from "../contact.js";
 
 const projects = [
   {
@@ -69,16 +66,20 @@ function ProjectActions({ project }) {
     <div className="project-actions">
       <a
         className="project-action"
-        href={contact(`Source code inquiry: ${project.name}`)}
+        href={composeEmail(`Source code inquiry: ${project.name}`)}
         aria-label={`Request ${project.name} GitHub source`}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <LuGithub aria-hidden="true" /> Request GitHub{" "}
         <LuArrowUpRight aria-hidden="true" />
       </a>
       <a
         className="project-action"
-        href={contact(`Demo inquiry: ${project.name}`)}
+        href={composeEmail(`Demo inquiry: ${project.name}`)}
         aria-label={`Request a live demo of ${project.name}`}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         Request Live Demo <LuArrowUpRight aria-hidden="true" />
       </a>
@@ -229,7 +230,7 @@ function RocketContact() {
       <div className="blast-message" inert={!ready} aria-hidden={!ready}>
         <p className="blast-kicker">YOUR NEXT BIG THING</p>
         <h2 id="contact-title">ready to blast<br /><em>your idea?</em></h2>
-        <a className="blast-button" href={contact("Ready to blast my idea")}>
+        <a className="blast-button" href={composeEmail("Ready to blast my idea")} target="_blank" rel="noopener noreferrer">
           Contact me <LuArrowUpRight aria-hidden="true" />
         </a>
       </div>
@@ -529,7 +530,7 @@ export default function PortfolioContinuation() {
           >
             LinkedIn
           </a>
-          <a href={`mailto:${email}`}>Email</a>
+          <a href={composeEmail("Hello Rafa")} target="_blank" rel="noopener noreferrer">Email</a>
         </nav>
         <p className="footer-credit">Designed &amp; built by Rafa.</p>
       </footer>

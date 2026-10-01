@@ -2,6 +2,7 @@ import { LuGithub } from 'react-icons/lu';
 import TechStack from './components/TechStack.jsx';
 import PortfolioContinuation from './components/PortfolioContinuation.jsx';
 import portrait from '../assets/portrait.png';
+import { composeEmail } from './contact.js';
 
 function Hero() {
   return (
@@ -13,7 +14,7 @@ function Hero() {
           <a href="#work">Work</a>
           <a href="#tools">Tools</a>
         </nav>
-        <a className="contact-label" href="mailto:rafafazli7@gmail.com?subject=Let%27s%20talk">Let's talk <span aria-hidden="true">↗</span></a>
+        <a className="contact-label" href={composeEmail("Let's talk")} target="_blank" rel="noopener noreferrer">Let's talk <span aria-hidden="true">↗</span></a>
       </header>
 
       <section className="hero" id="top" aria-label="Frontend">
