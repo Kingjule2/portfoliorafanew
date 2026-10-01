@@ -78,8 +78,45 @@
 }
 
 .stack-keys li {
+  --enter-distance-scale: 1;
   min-width: 0;
 }
+
+.stack-animate .stack-keys li {
+  opacity: 0;
+}
+
+.stack-animate.stack-in-view .stack-keys li {
+  animation: stack-key-enter 900ms cubic-bezier(0.2, 0.7, 0.3, 1) var(--enter-delay) both;
+}
+
+.stack-animate.stack-in-view .stack-keys li .keycap {
+  animation: stack-key-float 5.8s ease-in-out calc(var(--enter-delay) + 900ms) infinite;
+}
+
+@keyframes stack-key-enter {
+  from {
+    opacity: 0;
+    transform: translate(
+      calc(var(--enter-x) * var(--enter-distance-scale)),
+      calc(var(--enter-y) * var(--enter-distance-scale))
+    ) scale(0.32);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes stack-key-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
 
 .keycap {
   position: relative;
@@ -88,7 +125,7 @@
   height: 105px;
   padding: 0;
   border: 0;
-  border-radius: 14px;
+  border-radius: 10px;
   outline: none;
   background: #080a0bcc;
   color: var(--key-ink);
@@ -198,6 +235,10 @@
     transform: rotateX(22deg) rotateZ(-18deg);
   }
 
+  .stack-keys li {
+    --enter-distance-scale: 0.9;
+  }
+
   .keycap {
     height: 95px;
   }
@@ -226,15 +267,18 @@
     gap: 15px 8px;
   }
 
+  .stack-keys li {
+    --enter-distance-scale: 0.65;
+  }
   .keycap {
     height: clamp(75px, 17vw, 100px);
-    border-radius: 11px;
+    border-radius: 10px;
   }
 
   .keycap-face {
     inset: 5px 4px 9px;
     gap: 8px;
-    border-radius: 8px;
+    border-radius: 10px;
   }
 
   .keycap-icon {
@@ -273,6 +317,15 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .stack-animate .stack-keys li {
+    opacity: 1;
+  }
+
+  .stack-animate.stack-in-view .stack-keys li,
+  .stack-animate.stack-in-view .stack-keys li .keycap {
+    animation: none;
+  }
+
   .keycap-body {
     transition: none;
   }

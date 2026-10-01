@@ -28,17 +28,20 @@ a:focus-visible {
 .canvas {
   width: min(100%, 1536px);
   margin-inline: auto;
-  overflow: hidden;
+  overflow: clip;
 }
 
 .site-header {
-  position: relative;
+  position: sticky;
+  z-index: 20;
+  top: 0;
   display: flex;
-  height: clamp(88px, 11.458vw, 176px);
+  height: clamp(72px, 7.5vw, 112px);
   align-items: center;
   justify-content: space-between;
   padding-inline: 5.4%;
   background: #f3f1ef;
+  box-shadow: 0 1px 0 #11111112;
 }
 
 .wordmark {
@@ -52,20 +55,20 @@ a:focus-visible {
   left: 50%;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 9px;
   transform: translateX(-50%);
 }
 
 .site-nav a,
 .site-nav span {
   display: inline-flex;
-  min-width: 80px;
-  min-height: 32px;
+  min-width: 70px;
+  min-height: 28px;
   align-items: center;
   justify-content: center;
   border-radius: 999px;
   background: #e9e8e7;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
 }
 
@@ -125,19 +128,56 @@ a:focus-visible {
 }
 
 .sticker {
+  --sticker-left: 0%;
+  --sticker-top: 0%;
+  --sticker-rotation: 0deg;
+  --sticker-delay: 0ms;
   position: absolute;
-  z-index: 3;
+  z-index: 1;
   display: grid;
   place-items: center;
+  border-radius: 10px;
   box-shadow: 7px 13px 15px rgb(0 0 0 / 22%);
+  transform-origin: center;
+  translate: 0 0;
+  animation:
+    sticker-enter 900ms cubic-bezier(0.2, 0.7, 0.3, 1) var(--sticker-delay) both,
+    sticker-float 6s ease-in-out calc(var(--sticker-delay) + 900ms) infinite;
+}
+
+@keyframes sticker-enter {
+  from {
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    scale: 0.2;
+    rotate: 0deg;
+  }
+  to {
+    top: var(--sticker-top);
+    left: var(--sticker-left);
+    opacity: 1;
+    scale: 1;
+    rotate: var(--sticker-rotation);
+  }
+}
+
+@keyframes sticker-float {
+  0%, 100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -9px;
+  }
 }
 
 .sticker-github {
-  top: 17%;
-  left: 23%;
+  --sticker-left: 23%;
+  --sticker-top: 17%;
+  --sticker-rotation: -13deg;
+  --sticker-delay: 80ms;
   width: 6.8%;
   aspect-ratio: 1;
-  transform: rotate(-13deg);
   background: #111;
   color: white;
 }
@@ -147,12 +187,12 @@ a:focus-visible {
 }
 
 .sticker-figma {
-  top: 19%;
-  right: 19%;
+  --sticker-left: 73.9%;
+  --sticker-top: 19%;
+  --sticker-rotation: 15deg;
+  --sticker-delay: 220ms;
   width: 7.1%;
   aspect-ratio: 1;
-  transform: rotate(15deg);
-  border-radius: 7px;
   background: #111;
 }
 
@@ -162,12 +202,12 @@ a:focus-visible {
 }
 
 .sticker-react {
-  top: 62%;
-  left: 16%;
+  --sticker-left: 16%;
+  --sticker-top: 62%;
+  --sticker-rotation: 14deg;
+  --sticker-delay: 360ms;
   width: 11.2%;
   aspect-ratio: 1;
-  transform: rotate(14deg);
-  border-radius: 7px;
   background: #f6fbfc;
 }
 
@@ -177,14 +217,16 @@ a:focus-visible {
 }
 
 .sticker-js {
-  top: 67%;
-  right: 16%;
+  --sticker-left: 73.9%;
+  --sticker-top: 67%;
+  --sticker-rotation: -12deg;
+  --sticker-delay: 500ms;
   width: 10.1%;
   aspect-ratio: 1;
-  transform: rotate(-12deg);
   background: #f7df1e;
   color: #111;
 }
+
 
 .sticker-js span {
   align-self: end;
@@ -239,7 +281,7 @@ a:focus-visible {
 
 @media (max-width: 800px) {
   .site-header {
-    min-height: 88px;
+    min-height: 72px;
     padding-inline: 6%;
   }
 
@@ -279,13 +321,17 @@ a:focus-visible {
     width: 10%;
   }
 
+  .sticker-figma {
+    --sticker-left: 71%;
+  }
+
   .sticker-react {
-    left: 7%;
+    --sticker-left: 7%;
     width: 16%;
   }
 
   .sticker-js {
-    right: 7%;
+    --sticker-left: 78%;
     width: 15%;
   }
 
@@ -311,10 +357,10 @@ a:focus-visible {
 
 @media (max-width: 560px) {
   .site-header {
-    height: 90px;
+    height: 78px;
     flex-wrap: wrap;
     align-content: center;
-    row-gap: 12px;
+    row-gap: 6px;
   }
 
   .wordmark {
@@ -325,6 +371,7 @@ a:focus-visible {
     order: 3;
     width: 100%;
     justify-content: center;
+    gap: 3px;
   }
 
   .hero {
@@ -341,26 +388,26 @@ a:focus-visible {
   }
 
   .sticker-github {
-    top: 15%;
-    left: 15%;
+    --sticker-top: 15%;
+    --sticker-left: 15%;
     width: 12%;
   }
 
   .sticker-figma {
-    top: 17%;
-    right: 13%;
+    --sticker-top: 17%;
+    --sticker-left: 75%;
     width: 12%;
   }
 
   .sticker-react {
-    top: 68%;
-    left: 4%;
+    --sticker-top: 68%;
+    --sticker-left: 4%;
     width: 20%;
   }
 
   .sticker-js {
-    top: 68%;
-    right: 4%;
+    --sticker-top: 68%;
+    --sticker-left: 78%;
     width: 18%;
   }
 
@@ -378,4 +425,16 @@ a:focus-visible {
     margin-top: 20px;
   }
 
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticker {
+    animation: none;
+    top: var(--sticker-top);
+    left: var(--sticker-left);
+    opacity: 1;
+    scale: 1;
+    rotate: var(--sticker-rotation);
+    translate: 0 0;
+  }
 }

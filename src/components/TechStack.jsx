@@ -1,4 +1,4 @@
-import { useId, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { LuArrowDownRight, LuMousePointer2 } from 'react-icons/lu';
 import Keycap from './Keycap.jsx';
 import { techStack } from './tech-stack-data.js';
@@ -11,13 +11,27 @@ import './tech-stack.css';
  * Hover, focus, or tap inspects a tool; keyboard and reduced motion are supported.
  */
 export default function TechStack({ id = 'tools', items = techStack }) {
+  const sectionRef = useRef(null);
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section || !('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        section.classList.add('stack-in-view');
+        observer.disconnect();
+      }
+    }, { threshold: 0.15 });
+    section.classList.add('stack-animate');
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
   const titleId = useId();
   const [inspected, setInspected] = useState(null);
   const current = items.find((item) => item.name === inspected?.name) ?? items[0];
   const CurrentIcon = current?.icon;
 
   return (
-    <section id={id} className="tech-stack relative isolate overflow-hidden" aria-labelledby={titleId}>
+    <section id={id} ref={sectionRef} className="tech-stack relative isolate overflow-hidden" aria-labelledby={titleId}>
       <header className="relative z-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="stack-eyebrow mt-0 mb-5 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em]">
@@ -35,11 +49,23 @@ export default function TechStack({ id = 'tools', items = techStack }) {
         <div className="stack-orbit" aria-hidden="true" />
         <div className="stack-keyboard">
           <ul className="stack-keys" aria-label="Technology stack">
-            {items.map((item) => (
-              <li key={item.name}>
-                <Keycap item={item} onInspect={setInspected} />
-              </li>
-            ))}
+            {items.map((item, index) => {
+              const column = index % 4;
+              const row = Math.floor(index / 4);
+              const distanceFromCenter = Math.abs(column - 1.5) + Math.abs(row - 1.5);
+              return (
+                <li
+                  key={item.name}
+                  style={{
+                    '--enter-x': `${(1.5 - column) * 125}px`,
+                    '--enter-y': `${(1.5 - row) * 120}px`,
+                    '--enter-delay': `${Math.round(distanceFromCenter * 80)}ms`,
+                  }}
+                >
+                  <Keycap item={item} onInspect={setInspected} />
+                </li>
+              );
+            })}
           </ul>
         </div>
         <p className="stack-hint flex items-center gap-2 font-mono text-[11px] tracking-wide">

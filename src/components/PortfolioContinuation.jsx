@@ -1,16 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   LuArrowDownRight,
   LuArrowUpRight,
   LuGithub,
-  LuLinkedin,
-  LuMail,
 } from "react-icons/lu";
 import "./portfolio-continuation.css";
 import jadiduluImage from "../../assets/jadidulu.png";
 import vclassImage from "../../assets/vclass.png";
 import jagaAnabulPoster from "../../asetfoto/Poster Beranda.png";
-import RocketLaunch from "./RocketLaunch.jsx";
 
 const email = "rafafazli7@gmail.com";
 const contact = (subject) =>
@@ -123,6 +120,122 @@ const journey = [
   ["05", "Making it real", "Products & competition projects."],
   ["NOW", "What comes next", "Focused on frontend engineering."],
 ];
+
+// Launch once per mount when half the stage is visible; never take over page scroll.
+// Reduced motion skips to the email CTA, which stays inert until the flight ends.
+function RocketContact() {
+  const stage = useRef(null);
+  const [phase, setPhase] = useState("idle");
+
+  useEffect(() => {
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const finish = () => {
+      if (motion.matches) {
+        observer.disconnect();
+        setPhase("complete");
+      }
+    };
+    if (motion.matches || !("IntersectionObserver" in window)) {
+      setPhase("complete");
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setPhase("countdown");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.5 },
+    );
+    observer.observe(stage.current);
+    motion.addEventListener("change", finish);
+    return () => {
+      observer.disconnect();
+      motion.removeEventListener("change", finish);
+    };
+  }, []);
+
+  useEffect(() => {
+    // One-shot launch: 1s hold, 350ms ignition, 1s camera follow, 650ms exit.
+    // Tracking/exit durations match the transform transitions in the stylesheet.
+    const sequence = {
+      countdown: [1000, "shake"],
+      shake: [350, "tracking"],
+      tracking: [1000, "exit"],
+      exit: [650, "complete"],
+    };
+    const next = sequence[phase];
+    if (!next) return;
+    const timer = window.setTimeout(() => setPhase(next[1]), next[0]);
+    return () => window.clearTimeout(timer);
+  }, [phase]);
+
+  const ready = phase === "complete";
+
+  return (
+    <section
+      className="contact-cta portfolio-light"
+      id="contact"
+      aria-label="Let's connect"
+      data-phase={phase}
+      ref={stage}
+    >
+      <div className="launch-header">
+        <SectionLabel number="08">LET'S CONNECT</SectionLabel>
+        <span className="launch-coordinate" aria-hidden="true">NEXT STOP / YOUR IDEA</span>
+      </div>
+      <div className="launch-scene" aria-hidden="true">
+        <div className="launch-world">
+          <div className="launch-sky" />
+          <span className="launch-star star-one">+</span>
+          <span className="launch-star star-two">+</span>
+          <span className="launch-star star-three">+</span>
+          <div className="launch-ground">
+            <div className="launch-pad" />
+            <div className="launch-smoke">
+              <span /><span /><span /><span /><span /><span />
+            </div>
+          </div>
+        </div>
+        <div className="rocket-flight">
+          <svg className="launch-rocket" viewBox="0 0 160 280" fill="none">
+            <g className="rocket-flame">
+              <path d="M62 193Q48 231 80 274Q112 231 98 193Z" fill="#8da777" />
+              <path d="M71 195Q63 224 80 249Q97 224 89 195Z" fill="#e5edb7" />
+            </g>
+            <g stroke="#26352c" strokeWidth="3" strokeLinejoin="round">
+              <path d="M54 124Q22 140 24 192L58 175M106 124Q138 140 136 192L102 175" fill="#8da777" />
+              <path d="M61 179H99L96 199H64Z" fill="#26352c" />
+              <path d="M80 12C48 39 42 92 49 144L58 183H102L111 144C118 92 112 39 80 12Z" fill="#faf8f2" />
+              <path d="M80 12Q57 32 51 66H109Q103 32 80 12Z" fill="#a9bf93" />
+              <path d="M98 72Q109 128 96 177" stroke="#d7ddd1" strokeWidth="7" />
+              <circle cx="80" cy="99" r="23" fill="#a9bf93" />
+              <circle cx="80" cy="99" r="16" fill="#263b36" />
+              <path d="M72 94Q75 88 82 89" stroke="#f3f1ef" strokeLinecap="round" />
+              <path d="M80 151V189" strokeLinecap="round" />
+              <path d="M59 171H101" />
+            </g>
+          </svg>
+        </div>
+        <p className="launch-status">
+          {phase === "idle" || phase === "countdown"
+            ? "GREAT IDEAS START HERE."
+            : phase === "shake"
+              ? "READY FOR LIFTOFF."
+              : "A LITTLE AMBITION. NO LIMITS."}
+        </p>
+      </div>
+      <div className="blast-message" inert={!ready} aria-hidden={!ready}>
+        <p className="blast-kicker">YOUR NEXT BIG THING</p>
+        <h2 id="contact-title">ready to blast<br /><em>your idea?</em></h2>
+        <a className="blast-button" href={contact("Ready to blast my idea")}>
+          Contact me <LuArrowUpRight aria-hidden="true" />
+        </a>
+      </div>
+    </section>
+  );
+}
 
 export default function PortfolioContinuation() {
   const root = useRef(null);
@@ -391,13 +504,7 @@ export default function PortfolioContinuation() {
         </div>
       </section>
 
-      <section
-        className="contact-cta portfolio-light portfolio-section"
-        id="contact"
-        aria-labelledby="contact-title"
-      >
-        <RocketLaunch />
-      </section>
+      <RocketContact />
 
       <footer className="portfolio-footer">
         <div className="footer-identity">
